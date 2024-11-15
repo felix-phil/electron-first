@@ -1,0 +1,54 @@
+// @see - https://www.electron.build/configuration/configuration
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "felix-davido-music-rank",
+  "asar": true,
+  "productName": "Felix Davido's Music Rank",
+  "directories": {
+    "output": "release/${version}"
+  },
+  "files": [
+    "dist",
+    "dist-electron"
+  ],
+  "mac": {
+    "target": [
+      {
+        "target": "dmg",
+        "arch": [
+          "x64", // Intel-based macOS
+          "arm64" // ARM-based macOS (M1/M2)
+        ]
+      }
+    ],
+    "artifactName": "${productName}-Mac-${arch}-${version}-Installer.${ext}"
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64" // Windows Intel 64-bit
+        ]
+      }
+    ],
+    "artifactName": "${productName}-Windows-${arch}-${version}-Setup.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false
+  },
+  "linux": {
+    "target": [
+      {
+        "target": "AppImage",
+        "arch": [
+          "x64" // Linux Intel 64-bit
+        ]
+      }
+    ],
+    "artifactName": "${productName}-Linux-${arch}-${version}.${ext}"
+  }
+}
